@@ -28,8 +28,8 @@
         <label for="my-drawer" class="drawer-overlay"></label>
         <ul class="menu p-4 w-80 bg-base-100 text-base-content">
           <!-- Sidebar content here -->
-          <li><a>Sidebar Item 1</a></li>
-          <li><a>Sidebar Item 2</a></li>
+          <li @click="delayClickItemDrawer('/')"><a>Index</a></li>
+          <li @click="delayClickItemDrawer('/about')"><a>About</a></li>
           
         </ul>
       </div>
@@ -42,6 +42,16 @@
     
     const addFood = () => {
         food.value.push('carboonara');
+    }
+
+    const delayClickItemDrawer = (path: string) => {
+      if(path.at(0) !== '/'){
+        return;
+      }
+      
+      setTimeout(() => {
+        window.location.href = path;
+      }, 200);
     }
     
   </script>

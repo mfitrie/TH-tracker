@@ -1,0 +1,18 @@
+---
+import HelloWorld from "../components/HelloWorld.vue";
+const title = 'About';
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="emerald">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<HelloWorld client:load/>
+	</body>
+</html>
