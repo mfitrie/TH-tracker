@@ -38,7 +38,6 @@
   </template>
   
   <script setup lang="ts">
-    import { Icon } from '@iconify/vue';
     import {ref} from 'vue';
     const food = ref<Array<string>>(["Pizza", "French fries", "Spaghetti"]);
     
