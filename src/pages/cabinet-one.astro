@@ -2,9 +2,31 @@
 import MainPage from "../layouts/main-page.astro";
 import Page from "../components/Page.vue";
 const title = 'Cabinet One';
-const listData = ["spagetti", "nachos"];
+const listData = [
+	{
+		postId: 1,
+		id: 1,
+		name: "id labore ex et quam laborum",
+		email: "Eliseo@gardner.biz",
+		body: "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
+	},
+];
+
+interface ListData {
+	data: Array<{
+		postId: number,
+		id: number,
+		name: string,
+		email: string,
+		body: string,
+	}>
+}
+
+const LINK = 'https://jsonplaceholder.typicode.com/posts';
+const reqData = await fetch(LINK)
+	.then(response => response.json())
 ---
 
 <MainPage title={title}>
-	<Page client:load listData={ listData }/>
+	<Page client:load listData={ reqData }/>
 </MainPage>

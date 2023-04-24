@@ -1,10 +1,10 @@
 ---
 import MainPage from "../layouts/main-page.astro";
-import Page from "../components/Page.vue";
+import Dashboard from "../components/Dashboard.vue";
 const title = 'Dashboard';
 const listData = ["carbonara", "pizza"];
 ---
 
 <MainPage title={title}>
-	<Page client:load listData={ listData }/>
+	<Dashboard client:load />
 </MainPage>
