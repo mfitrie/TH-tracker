@@ -14,7 +14,7 @@
                 </tr>
             </thead> 
             <tbody v-auto-animate>
-                <tr class="hover" v-for="({ userId, id, title, body }, index) in listData" :key="id" @click="deleteItem(id)">
+                <tr class="hover" v-for="({ userId, id, title, body }, index) in listData" :key="id">
                     <th>{{ index + 1 }}</th> 
                     <td>{{ userId }}</td> 
                     <td>{{ id  }}</td> 
@@ -24,7 +24,7 @@
                         <button class="btn btn-outline btn-info">Edit</button>
                     </td>
                     <td>
-                        <button class="btn btn-outline btn-error">Delete</button>
+                        <button class="btn btn-outline btn-error" @click="deleteItem(id)">Delete</button>
                     </td>  
                 </tr>
             </tbody>
