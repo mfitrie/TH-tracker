@@ -1,5 +1,15 @@
 <template>
     <div class="overflow-x-auto">
+        <!-- <h5>Click emojis to remove them.</h5>
+        <ul v-auto-animate>
+            <li
+            v-for="item in items"
+            :key="item"
+            @click="removeItem(item)"
+            >
+            {{ item }}
+            </li>
+        </ul> -->
         <table class="table table-zebra w-full">
             <thead>
                 <tr>
@@ -12,7 +22,7 @@
                     <th></th> 
                 </tr>
             </thead> 
-            <tbody>
+            <tbody v-auto-animate>
                 <tr class="hover" v-for="({ userId, id, title, body }, index) in listData">
                     <th>{{ index + 1 }}</th> 
                     <td>{{ userId }}</td> 
@@ -41,8 +51,9 @@
     </div>
 </template>
 <script setup lang="ts">
-    import { toRefs, ref } from 'vue';
-        
+    import { ref } from 'vue';
+    import autoAnimate from '@formkit/auto-animate';
+
     const props = defineProps({
         listData: Array<{
             userId: number,
@@ -55,8 +66,12 @@
     const listData = ref(props.listData);
 
     const deleteItem = (id: number) => {
-        const index = listData.value.findIndex(item => item.id === id);
-        listData.value.splice(index, 1);
+        listData.value = listData.value.filter((item) => item.id !== id);
+    }
+
+    const items = ref(["😏","😐","😑","😒","😕"])
+    function removeItem(toRemove) {
+        items.value = items.value.filter((item) => item !== toRemove)
     }
 
 </script>
