@@ -1,6 +1,6 @@
 <template>
     <div class="overflow-x-auto">
-        <!-- <h5>Click emojis to remove them.</h5>
+        <h5>Click emojis to remove them.</h5>
         <ul v-auto-animate>
             <li
             v-for="item in items"
@@ -9,7 +9,7 @@
             >
             {{ item }}
             </li>
-        </ul> -->
+        </ul>
         <table class="table table-zebra w-full">
             <thead>
                 <tr>
@@ -23,7 +23,7 @@
                 </tr>
             </thead> 
             <tbody v-auto-animate>
-                <tr class="hover" v-for="({ userId, id, title, body }, index) in listData">
+                <tr class="hover" v-for="({ userId, id, title, body }, index) in listData" :key="id" @click="deleteItem(id)">
                     <th>{{ index + 1 }}</th> 
                     <td>{{ userId }}</td> 
                     <td>{{ id  }}</td> 
@@ -33,7 +33,7 @@
                         <button class="btn btn-outline btn-info">Edit</button>
                     </td>
                     <td>
-                        <button class="btn btn-outline btn-error" @click="deleteItem(id)">Delete</button>
+                        <button class="btn btn-outline btn-error">Delete</button>
                     </td>  
                 </tr>
             </tbody>
