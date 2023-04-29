@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
     <div class="px-5">
         <table class="table-auto">
         <thead class="h-12">
@@ -38,6 +39,47 @@
             <td>1975</td>
             </tr> -->
         </tbody>
+=======
+    <div class="overflow-x-auto">
+        <h5>Click emojis to remove them.</h5>
+        <table class="table table-zebra w-full">
+            <thead>
+                <tr>
+                    <th></th> 
+                    <th>User ID</th> 
+                    <th>ID</th> 
+                    <th>Title</th> 
+                    <th>Body</th> 
+                    <th></th> 
+                    <th></th> 
+                </tr>
+            </thead> 
+            <tbody v-auto-animate>
+                <tr class="hover" v-for="({ userId, id, title, body }, index) in listData" :key="id">
+                    <th>{{ index + 1 }}</th> 
+                    <td>{{ userId }}</td> 
+                    <td>{{ id  }}</td> 
+                    <td>{{ title }}</td> 
+                    <td>{{ body }}</td> 
+                    <td>
+                        <button class="btn btn-outline btn-info">Edit</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline btn-error" @click="deleteItem(id)">Delete</button>
+                    </td>  
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th></th> 
+                    <th>User ID</th> 
+                    <th>ID</th> 
+                    <th>Title</th> 
+                    <th>Body</th> 
+                    <th></th> 
+                </tr>
+            </tfoot>
+>>>>>>> 05220afbc49d8526dfb3bd7fdad49e65407deed3
         </table>
     </div>
 </template>
@@ -58,11 +100,6 @@
 
     const deleteItem = (id: number) => {
         listData.value = listData.value.filter((item) => item.id !== id);
-    }
-
-    const items = ref(["😏","😐","😑","😒","😕"])
-    function removeItem(toRemove) {
-        items.value = items.value.filter((item) => item !== toRemove)
     }
 
 </script>
