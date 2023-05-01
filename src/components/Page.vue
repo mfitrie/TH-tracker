@@ -1,8 +1,27 @@
 <template>
     <div class="px-5">
+        <!-- edit modal -->
+        <input type="checkbox" id="edit-modal" class="modal-toggle" />
+        <div class="modal">
+            <div class="modal-box">
+                <h3 class="font-bold text-lg">Congratulations random Internet user!</h3>
+                <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+                <div class="modal-action">
+                    <label for="edit-modal" class="btn btn-info">Edit</label>
+                    <label for="edit-modal" class="btn btn-error">Cancel</label>
+                </div>
+            </div>
+        </div>
+        <!-- edit modal -->
+
         <div class="py-5 flex items-center justify-between">
-            <div class="w-1/4">
-                <input class="input input-bordered w-full max-w-sm h-9" v-model="searchData" type="text" placeholder="Type here" />
+            <div class="w-1/4 relative">
+                <input class="input input-bordered w-full max-w-sm h-9" v-model="searchData" type="text" placeholder="Search by title" />
+                <!-- <div class="absolute bg-white z-10 border rounded-bl-md rounded-br-md" v-if="searchSuggestion.length !== 0">
+                    <p class="hover:bg-blue-300 cursor-pointer" v-for="{ id, title } in searchSuggestion" :key="id">
+                        {{ title }}
+                    </p>
+                </div> -->
             </div>
             <button class="btn btn-sm btn-outline btn-info justify-self-end;" @click="addItem">Add Item</button>
         </div>
@@ -22,7 +41,7 @@
                     <td class="p-2">{{ title }}</td> 
                     <td class="p-2">{{ body }}</td> 
                     <td class="pr-3">
-                        <button class="btn btn-sm btn-outline btn-info">Edit</button>
+                        <label for="edit-modal" class="btn btn-sm btn-outline btn-info">Edit</label>
                     </td>
                     <td class="">
                         <button class="btn btn-sm btn-outline btn-error" @click="deleteItem(id)">Delete</button>
@@ -55,6 +74,20 @@
 
         return listData.value.filter((item) => (item.title.includes(searchData.value.toLowerCase())))
     });
+
+    // const searchSuggestion = computed(() => {
+    //     if(searchListData.value.length === 0){
+    //         return [];
+    //     }
+
+    //     if(searchListData.value.length === listData.value.length){
+    //         return [];
+    //     }
+
+    //     if(searchListData.value.length >= 5){
+    //         return searchListData.value.slice(0, 4);
+    //     }
+    // })
 
     watch(searchData, (value: string) => {
         if(value.length === 0){
